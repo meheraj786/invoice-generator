@@ -1,36 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>Invoice generator</h1>
-  <input type="text"><label for="copmany-name">Company Name</label>
-  <input type="text"><label for="customer-name"></label>
-  <input type="text"><label for="customer-name">Customer Name</label>
-  <input type="text"><label for="customer-address">Customer Address</label>
-  <input type="text"><label for="customer-email">Customer Email</label>
-  <input type="text"><label for="customer-phone">Customer Phone</label>
-  <input type="text"><label for="invoice-number">Invoice Number</label>
-  <input type="text"><label for="invoice-date">Invoice Date</label>
-  <input type="text"><label for="due-date">Due Date</label>
-  <input type="text"><label for="item-description">Item Description</label>
-  <input type="text"><label for="item-quantity">Item Quantity</label>
-  <input type="text"><label for="item-price">Item Price</label>
-  <input type="text"><label for="item-total">Item Total</label>
-  <input type="text"><label for="subtotal">Subtotal</label>
-  <input type="text"><label for="tax">Tax</label>
-  <input type="text"><label for="total">Total</label>
-  <input type="text"><label for="payment-method">Payment Method</label>
-  <input type="text"><label for="notes">Notes</label>
-  <input type="text"><label for="terms">Terms</label>
-  <input type="text"><label for="signature">Signature</label>
-  
-  <button>Generate</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice Generator</title>
+    <link rel="stylesheet" href="style.css" />
 
-  <script src="script.js"></script>
-</body>
+  </head>
+  <body>
+    <h1>Invoice Generator</h1>
+    <div id="main">
+      <div class="customer-details">
+        <h2>Customer Details</h2>
+        <label for="customer-name">Customer Name</label>
+        <input type="text" id="customer-name">
+        <label for="customer-email">Customer Email</label>
+        <input type="email" id="customer-email">
+        <label for="customer-address">Customer Address</label>
+        <input type="text" id="customer-address">
+        <label for="customer-phone">Customer Phone</label>
+        <input type="text" id="customer-phone">
+        <label for="customer-zip">Customer Zip</label>
+        <input type="text" id="customer-zip">
+        <label for="customer-city">Customer City</label>
+        <input type="text" id="customer-city">
+        <label for="customer-country">Customer Country</label>
+        <input type="text" id="customer-country">
+        <label for="customer-vat">Customer VAT</label>
+        <input type="text" id="customer-vat">
+        <label for="customer-website">Customer Website</label>
+        <input type="text" id="customer-website">
+      </div>
+      <div class="invoice-details">
+        <h2>Invoice Details</h2>
+        <label for="invoice-number">Invoice Number</label>
+        <input type="text" id="invoice-number">
+        <label for="invoice-date">Invoice Date</label>
+        <input type="date" id="invoice-date">
+        <label for="invoice-due-date">Invoice Due Date</label>
+        <input type="date" id="invoice-due-date">
+        <label for="invoice-terms">Invoice Terms</label>
+        <input type="text" id="invoice-terms">
+        <label for="invoice-notes">Invoice Notes</label>
+        <input type="text" id="invoice-notes">
+        <label for="invoice-amount">Invoice Amount</label>
+        <input type="text" id="invoice-amount">
+        <label for="invoice-currency">Invoice Currency</label>
+        <input type="text" id="invoice-currency">
+        <label for="invoice-tax">Invoice Tax</label>
+        <input type="text" id="invoice-tax">
+        <label for="invoice-discount">Invoice Discount</label>
+        <input type="text" id="invoice-discount">
+        <label for="invoice-subtotal">Invoice Subtotal</label>
+        <input type="text" id="invoice-subtotal">
+        <label for="invoice-total">Invoice Total</label>
+        <input type="text" id="invoice-total">
+        <label for="invoice-status">Invoice Status</label>
+        <select id="invoice-status">
+          <option value="paid">Paid</option>
+          <option value="unpaid">Unpaid</option>
+          <option value="overdue">Overdue</option>
+          <option value="canceled">Canceled</option>
+          <option value="draft">Draft</option>
+          <option value="sent">Sent</option>
+          <option value="approved">Approved</option>
+          <option value="declined">Declined</option>
+          <option value="refunded">Refunded</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="button">
+      <button onclick="generateInvoice()">Generate</button>
+    </div>
+
+    <!-- Invoice Output Section -->
+    <div id="invoice-output">
+      <h2>Generated Invoice</h2>
+      <div class="invoice-section" id="customer-output">
+        <h3>Customer Details</h3>
+        <p id="output-customer-name"></p>
+        <p id="output-customer-email"></p>
+        <p id="output-customer-address"></p>
+        <p id="output-customer-phone"></p>
+        <p id="output-customer-zip"></p>
+        <p id="output-customer-city"></p>
+        <p id="output-customer-country"></p>
+        <p id="output-customer-vat"></p>
+        <p id="output-customer-website"></p>
+      </div>
+      <div class="invoice-section" id="invoice-output-details">
+        <h3>Invoice Details</h3>
+        <p id="output-invoice-number"></p>
+        <p id="output-invoice-date"></p>
+        <p id="output-invoice-due-date"></p>
+        <p id="output-invoice-terms"></p>
+        <p id="output-invoice-notes"></p>
+        <p id="output-invoice-amount"></p>
+        <p id="output-invoice-currency"></p>
+        <p id="output-invoice-tax"></p>
+        <p id="output-invoice-discount"></p>
+        <p id="output-invoice-subtotal"></p>
+        <p id="output-invoice-total"></p>
+        <p id="output-invoice-status"></p>
+      </div>
+    </div>
+
+<script src="script.js"></script>
+  </body>
 </html>
