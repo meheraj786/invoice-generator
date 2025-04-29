@@ -29,10 +29,25 @@ function generateInvoice() {
 }
 
 function downloadInvoice() {
-  const invoiceOutput = document.getElementById('invoice-output').innerHTML;
-  const blob = new Blob([invoiceOutput], { type: 'text/html' });
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = 'invoice.html';
-  link.click();
+  const { jsPDF } = window.jspdf; // Ensure jsPDF is loaded
+  const doc = new jsPDF();
+
+  // Get invoice details
+  const invoiceOutput = document.getElementById("invoice-output");
+  const customerDetails = document.getElementById("customer-output").innerText;
+  const invoiceDetails = document.getElementById("invoice-output-details").innerText;
+
+  // Add content to the PDF
+  doc.setFontSize(16);
+  doc.text("Invoice", 10, 10);
+
+  doc.setFontSize(12);
+  doc.text("Customer Details:", 10, 20);
+  doc.text( 10, 30);
+
+  doc.text("Invoice Details:", 10, 50);
+  doc.text( 10, 60);
+
+  // Save the PDF
+  doc.save("invoice.pdf");
 }
