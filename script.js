@@ -27,3 +27,12 @@ function generateInvoice() {
   // Show the invoice output
   document.getElementById("invoice-output").style.display = "block";
 }
+
+function downloadInvoice() {
+  const invoiceOutput = document.getElementById('invoice-output').innerHTML;
+  const blob = new Blob([invoiceOutput], { type: 'text/html' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'invoice.html';
+  link.click();
+}
