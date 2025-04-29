@@ -32,10 +32,34 @@ function downloadInvoice() {
   const { jsPDF } = window.jspdf; // Ensure jsPDF is loaded
   const doc = new jsPDF();
 
-  // Get invoice details
-  const invoiceOutput = document.getElementById("invoice-output");
-  const customerDetails = document.getElementById("customer-output").innerText;
-  const invoiceDetails = document.getElementById("invoice-output-details").innerText;
+  // Fetch customer details
+  const customerDetails = `
+    ${document.getElementById("output-customer-name").innerText}
+    ${document.getElementById("output-customer-email").innerText}
+    ${document.getElementById("output-customer-address").innerText}
+    ${document.getElementById("output-customer-phone").innerText}
+    ${document.getElementById("output-customer-zip").innerText}
+    ${document.getElementById("output-customer-city").innerText}
+    ${document.getElementById("output-customer-country").innerText}
+    ${document.getElementById("output-customer-vat").innerText}
+    ${document.getElementById("output-customer-website").innerText}
+  `;
+
+  // Fetch invoice details
+  const invoiceDetails = `
+    ${document.getElementById("output-invoice-number").innerText}
+    ${document.getElementById("output-invoice-date").innerText}
+    ${document.getElementById("output-invoice-due-date").innerText}
+    ${document.getElementById("output-invoice-terms").innerText}
+    ${document.getElementById("output-invoice-notes").innerText}
+    ${document.getElementById("output-invoice-amount").innerText}
+    ${document.getElementById("output-invoice-currency").innerText}
+    ${document.getElementById("output-invoice-tax").innerText}
+    ${document.getElementById("output-invoice-discount").innerText}
+    ${document.getElementById("output-invoice-subtotal").innerText}
+    ${document.getElementById("output-invoice-total").innerText}
+    ${document.getElementById("output-invoice-status").innerText}
+  `;
 
   // Add content to the PDF
   doc.setFontSize(16);
@@ -43,10 +67,10 @@ function downloadInvoice() {
 
   doc.setFontSize(12);
   doc.text("Customer Details:", 10, 20);
-  doc.text( 10, 30);
+  doc.text(customerDetails, 10, 30);
 
-  doc.text("Invoice Details:", 10, 50);
-  doc.text( 10, 60);
+  doc.text("Invoice Details:", 10, 80);
+  doc.text(invoiceDetails, 10, 90);
 
   // Save the PDF
   doc.save("invoice.pdf");
